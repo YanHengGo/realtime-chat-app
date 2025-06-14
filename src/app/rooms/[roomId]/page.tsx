@@ -3,13 +3,20 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { sendMessageToRoom, subscribeToMessages } from '@/lib/firestore';
+import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+import { useRouter } from 'next/navigation';
 
 export default function RoomPage() {
     const { roomId } = useParams();
     const [text, setText] = useState('');
     const [messages, setMessages] = useState<any[]>([]); // ← ここでメッセージ保持
-  
+    const router = useRouter();
+
+    const handleLogout = async () => {
+      await signOut(auth);
+      router.push('/login');
+    };  
     useEffect(() => {
       if (!roomId || Array.isArray(roomId)) return;
       console.log("📡 サブスク開始 roomId:", roomId);
@@ -53,7 +60,7 @@ export default function RoomPage() {
                 }`}
               >
                 {!isMyMessage && (
-                  <p className="text-xs text-gray-500">👤 {msg.uid}</p>
+                  <p className="text-xs text-gray-500">👤 </p>
                 )}
                 <p>{msg.text}</p>
               </div>
@@ -71,6 +78,12 @@ export default function RoomPage() {
             placeholder="メッセージを入力"
           />
           <button className="bg-blue-600 text-white px-4 py-1 rounded">送信</button>
+          <button
+            onClick={handleLogout}
+            className="text-sm text-red-600 underline absolute top-4 right-4"
+          >
+            ログアウト
+          </button>
         </form>
       </div>
     );
