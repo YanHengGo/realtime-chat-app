@@ -24,3 +24,10 @@ cd realtime-chat-app
 npm install
 cp .env.sample .env.local  # or 自分で.env.localを作成して設定
 npm run dev
+
+## 🌍 公開URL
+
+[![Deploy with Vercel](https://vercel.com/button)](https://realtime-chat-app-sigma-cyan.vercel.app/)
+
+アプリにアクセス 👉 https://realtime-chat-app-sigma-cyan.vercel.app/
+
