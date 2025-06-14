@@ -11,10 +11,10 @@ Firebase Authentication + Firestore を使ったリアルタイムチャット�
 
 ## 🛠 技術スタック
 
-- Next.js 15
-- TypeScript
-- Firebase（Auth / Firestore）
-- Tailwind CSS
+- [Next.js](https://nextjs.org/) (App Router / TypeScript)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Firebase](https://firebase.google.com/)（Auth / Firestore）
+- [Vercel](https://vercel.com/)（自動デプロイ）
 
 ## ▶️ ローカル開発手順
 
